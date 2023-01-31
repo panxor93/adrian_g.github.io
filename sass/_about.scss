@@ -79,6 +79,7 @@
     padding: 1rem 1rem;
     border-radius: 10px;
     transition: all 0.3s;
+    z-index: 5;
 
     &--active {
       opacity: 1;
