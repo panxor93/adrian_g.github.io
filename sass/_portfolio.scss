@@ -57,12 +57,20 @@
     color: #fff;
     width: 60%;
     text-align: center;
+
+    @media only screen and (max-width: $bp-small) {
+      font-size: 3rem;
+    }
   }
 
   &__desc {
     padding: 2rem;
     margin-top: -2rem;
     line-height: 1.6;
+
+    @media only screen and (max-width: $bp-small) {
+      font-size: 2rem;
+    }
   }
 
   &:hover {
