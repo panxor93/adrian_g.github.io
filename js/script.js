@@ -5,10 +5,13 @@
 const btnShowTooltip = document.querySelector(".card__text span");
 const btnOpenContact = document.querySelector(".nav__link--cta");
 const btnCloseContact = document.querySelector(".popup-window__close");
+const btnMenu = document.querySelector(".menu-bar");
 
 const btnsNav = document.querySelectorAll(".nav__link");
 const btnLogo = document.querySelector(".nav__logo");
 const btnHero = document.querySelector(".hero__btn");
+
+const btnsPop = document.querySelectorAll(".popup-window__link");
 
 const bodyEl = document.querySelector("body");
 const tooltipEL = document.querySelector(".card__tooltip");
@@ -50,6 +53,7 @@ popupEl.addEventListener("click", function (e) {
 
   popupEl.classList.remove("popup-background--open");
   bodyEl.classList.remove("scroll-disabled");
+  btnMenu.classList.remove("menu-bar--open");
 });
 
 contactEls.forEach((el) => {
@@ -70,7 +74,9 @@ btnsNav.forEach((btn) => {
     const child = this.querySelector("a");
     const href = child.getAttribute("href");
 
-    if (href.length == 1) return; // CTA
+    if (href.length == 1) return;
+
+    console.log(href);
 
     const section = document.querySelector(href);
     section.scrollIntoView({ behavior: "smooth" });
@@ -106,4 +112,29 @@ const cardObserver = new IntersectionObserver(showCard, {
 cardsAbout.forEach(function (card) {
   cardObserver.observe(card);
   card.classList.add("card--hidden");
+});
+
+btnMenu.addEventListener("click", function () {
+  this.classList.toggle("menu-bar--open");
+
+  popupEl.classList.toggle("popup-background--open");
+  bodyEl.classList.toggle("scroll-disabled");
+});
+
+btnsPop.forEach((btn) => {
+  btn.addEventListener("click", function (e) {
+    e.preventDefault();
+
+    popupEl.classList.remove("popup-background--open");
+    bodyEl.classList.remove("scroll-disabled");
+    btnMenu.classList.remove("menu-bar--open");
+
+    const child = this.querySelector("a");
+    const href = child.getAttribute("href");
+
+    if (href.length == 1) return;
+
+    const section = document.querySelector(href);
+    section.scrollIntoView({ behavior: "smooth" });
+  });
 });
