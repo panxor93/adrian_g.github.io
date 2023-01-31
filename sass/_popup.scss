@@ -1,0 +1,147 @@
+.popup {
+  &-background {
+    position: fixed;
+    height: 100vh;
+    width: 100%;
+    top: 0%;
+    left: 0%;
+    backdrop-filter: blur(4px);
+    background-color: rgba(#000, 0.3);
+    z-index: 10000;
+    opacity: 1;
+    transition: all 0.3s;
+    visibility: hidden;
+
+    &--open {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+
+  &-window {
+    width: 35%;
+    height: 25%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 2rem 4rem rgba(#000, 0.2);
+    border-radius: 20px;
+    overflow: hidden;
+    background-image: linear-gradient(
+      to left bottom,
+      lighten($color-primary, 40%),
+      lighten($color-primary, 30%)
+    );
+
+    @media only screen and (max-width: $bp-largest) {
+      width: 45%;
+    }
+
+    @media only screen and (max-width: $bp-medium) {
+      width: 80%;
+    }
+
+    &__close {
+      height: 3rem;
+      width: 3rem;
+      position: absolute;
+      top: 0;
+      right: 0;
+      margin: 1rem;
+      stroke: $color-primary;
+      cursor: pointer;
+
+      @media only screen and (max-width: $bp-small) {
+        opacity: 0;
+        width: 0;
+        height: 0;
+        visibility: none;
+        stroke: transparent;
+      }
+    }
+
+    &__link {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      @media only screen and (min-width: $bp-small) {
+        opacity: 0;
+        width: 0;
+        height: 0;
+        visibility: none;
+        position: absolute;
+      }
+    }
+
+    &__link a:link,
+    &__link a:visited {
+      display: flex;
+      padding: 1rem 2rem;
+      height: 4rem;
+      font-size: 2rem;
+      color: #000;
+      text-decoration: none;
+      border: 2px solid #000;
+      background-color: #ddd;
+      padding: 1rem 2rem;
+      border-radius: 20px;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}
+
+.contact-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  width: 80%;
+  margin: 0 auto;
+  padding: 0.5rem 1rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  justify-content: space-between;
+
+  @media only screen and (max-width: $bp-small) {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.contact-item {
+  display: grid;
+  grid-template-columns: min-content 1fr;
+  gap: 1rem;
+  align-items: center;
+  padding: 1rem 2rem;
+  border-radius: 20px;
+  border: 2px solid #000;
+  background-color: #ddd;
+  cursor: pointer;
+
+  @media only screen and (max-width: $bp-small) {
+    grid-column: 1 / -1;
+  }
+
+  &__icon {
+    height: 3rem;
+    width: 3rem;
+    stroke: $color-primary;
+  }
+
+  &__text {
+    font-size: 1.6rem;
+  }
+
+  &:hover {
+    background-color: #aaa;
+  }
+
+  &:active {
+    background-color: #999;
+  }
+}
